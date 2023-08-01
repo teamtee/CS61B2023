@@ -4,7 +4,12 @@ public class ListExercises {
 
     /** Returns the total sum in a list of integers */
 	public static int sum(List<Integer> L) {
-        return 0;
+
+        Integer sum;
+        for(Integer item: L){
+            sum = sum + item;
+        }
+        return item;
     }
 
     /** Returns a list containing the even numbers of the given list */

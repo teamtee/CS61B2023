@@ -17,7 +17,7 @@ public class NaiveLetterFreqGuesserTest {
     public void testFreqMapSmallFile() {
         NaiveLetterFreqGuesser nlfg = new NaiveLetterFreqGuesser("data/example.txt");
         Map<Character, Integer> freqMap = nlfg.getFrequencyMap();
-
+        System.out.println(freqMap);
         // y should occur once.
         assertThat(freqMap.get('y')).isEqualTo(1);
 

@@ -1,8 +1,11 @@
 package aoa.guessers;
 
 import aoa.utils.FileUtils;
+import aoa.utils.PGAHelper;
+
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class NaiveLetterFreqGuesser implements Guesser {
     private final List<String> words;
@@ -20,19 +23,19 @@ public class NaiveLetterFreqGuesser implements Guesser {
     /** Returns a map from a given letter to its frequency across all words.
      *  This task is similar to something you did in hw0b! */
     public Map<Character, Integer> getFrequencyMap() {
-        // TODO: Fill in this method.
-        return null;
+        return PGAHelper.getFrequencyMap(words);
     }
 
     /** Returns the most common letter in WORDS that has not yet been guessed
      *  (and therefore isn't present in GUESSES). */
     public char getGuess(List<Character> guesses) {
-        // TODO: Fill in this method.
-        return '?';
+        Map<Character, Integer> freqMap = getFrequencyMap();
+        return  PGAHelper.getGuess(guesses,freqMap);
     }
 
     public static void main(String[] args) {
         NaiveLetterFreqGuesser nlfg = new NaiveLetterFreqGuesser("data/example.txt");
+//        System.out.println()
         System.out.println("list of words: " + nlfg.words);
         System.out.println("frequency map: " + nlfg.getFrequencyMap());
 

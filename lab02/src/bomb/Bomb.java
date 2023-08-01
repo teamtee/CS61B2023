@@ -14,7 +14,6 @@ public class Bomb {
         StdRandom.setSeed(1337);
         char[] chars = code.toCharArray();
         StdRandom.shuffle(chars);
-
         return String.valueOf(chars);
     }
 
