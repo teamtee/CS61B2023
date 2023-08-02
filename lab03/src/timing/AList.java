@@ -15,7 +15,7 @@ package timing;
 */
 
 public class AList<Item> {
-    private Item[] items;
+    public Item[] items;
     private int size;
 
     /** Creates an empty list. */
@@ -34,7 +34,7 @@ public class AList<Item> {
     /** Inserts X into the back of the list. */
     public void addLast(Item x) {
         if (size == items.length) {
-            resize(size + 1); // TODO: Change the resize strategy
+            resize(size * 2); // TODO: Change the resize strategy
         }
 
         items[size] = x;

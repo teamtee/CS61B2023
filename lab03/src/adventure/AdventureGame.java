@@ -19,7 +19,7 @@ public class AdventureGame {
         );
     }
 
-    AdventureGame(In in, AdventureStage firstStage) {
+    private AdventureGame(In in, AdventureStage firstStage) {
         this.in = in;
         this.currentStage = firstStage;
     }
@@ -27,7 +27,7 @@ public class AdventureGame {
     /**
      * runs the stage and its puzzles.
      */
-    void handleStage() {
+    private void handleStage() {
         this.currentStage.playStage();
         System.out.println(this);
         if (this.currentStage.getResponses().isEmpty()) {
@@ -48,7 +48,7 @@ public class AdventureGame {
 
     private AdventureStage parseResponse(String response) {
         // If empty then prompt again
-        if (response == null || response.isEmpty()) {
+        if (response.isEmpty()) {
             return null;
         }
 

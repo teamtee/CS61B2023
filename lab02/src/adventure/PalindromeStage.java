@@ -73,6 +73,7 @@ public class PalindromeStage implements AdventureStage {
             reversed = new IntList(l.first, reversed);
             l = l.rest;
         }
+        reversed = new IntList(l.first, reversed);
         return reversed;
     }
 
@@ -86,6 +87,10 @@ public class PalindromeStage implements AdventureStage {
             a[i] = Character.getNumericValue(s.charAt(i));
         }
         return IntList.of(a);
+    }
+    public static void main(String[] args){
+        PalindromeStage game = new PalindromeStage(new In());
+        game.playStage();
     }
 
 }
