@@ -65,7 +65,7 @@ public class TestBSTMapExtra {
         q.put("b","a");
         q.put("a","a");
         q.put("d","a");
-        q.put("e","a");                         // a b c d e
+        q.put("e","a");
         assertThat(q.remove("e")).isNotNull();      // a b c d
         assertThat(q.containsKey("a")).isTrue();
         assertThat(q.containsKey("b")).isTrue();
@@ -98,6 +98,7 @@ public class TestBSTMapExtra {
         assertThat(rightChild.remove('D')).isEqualTo(4);
         assertThat(rightChild.remove('G')).isEqualTo(7);
         assertThat(rightChild.remove('A')).isEqualTo(100);
+        rightChild.remove('A');
         assertThat(rightChild.size()).isEqualTo(9);
 
         BSTMap<Character, Integer> leftChild = new BSTMap<>();
