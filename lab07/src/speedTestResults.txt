@@ -1,0 +1,10 @@
+[inorder]
+class ULLMap: 0.53 sec
+class BSTMap: 0.44 sec
+Java's Built-in TreeMap: 0.01 sec
+Java's Built-in HashMap: 0.00 sec
+[random]
+class ULLMap: 2.43 sec
+class BSTMap: 0.01 sec
+Java's Built-in TreeMap: 0.01 sec
+Java's Built-in HashMap: 0.00 sec
