@@ -42,6 +42,7 @@ public class TestGuitarString  {
     @Test
     public void testTic() {
         GuitarString s = new GuitarString(100);
+        s.sample();
         assertThat(s.sample()).isEqualTo(0.0);
         assertThat(s.sample()).isEqualTo(0.0);
         assertThat(s.sample()).isEqualTo(0.0);

@@ -1,6 +1,8 @@
 package gh2;
 
+import deque.ArrayDeque;
 import deque.Deque;
+import edu.princeton.cs.algs4.StdAudio;
 // TODO: maybe more imports
 
 //Note: This file will not compile until you complete the Deque implementations
@@ -17,6 +19,10 @@ public class GuitarString {
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
+        buffer = new ArrayDeque<>((int)Math.round(SR/frequency)+1);
+        for(int i = 0 ; i < Math.round(SR/frequency) ; i++ ){
+            buffer.addFirst(0.0);
+        }
         // TODO: Create a buffer with capacity = SR / frequency. You'll need to
         //       cast the result of this division operation into an int. For
         //       better accuracy, use the Math.round() function before casting.
@@ -26,6 +32,10 @@ public class GuitarString {
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
+        for( int i = 0; i < buffer.size();i++){
+            buffer.removeFirst();
+            buffer.addLast(Math.random()-0.5);
+        }
         // TODO: Dequeue everything in buffer, and replace with random numbers
         //       between -0.5 and 0.5. You can get such a number by using:
         //       double r = Math.random() - 0.5;
@@ -40,6 +50,9 @@ public class GuitarString {
      * the Karplus-Strong algorithm.
      */
     public void tic() {
+        double first = buffer.removeFirst();
+        double newItem = (buffer.get(0) + first)/2 * 0.996;
+        buffer.addLast(newItem);
         // TODO: Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.
         //       **Do not call StdAudio.play().**
@@ -48,7 +61,12 @@ public class GuitarString {
     /* Return the double at the front of the buffer. */
     public double sample() {
         // TODO: Return the correct thing.
-        return 0;
+        return buffer.get(0);
+    }
+    public static void main(String[] args){
+        for(int i = 0 ; i < 100 ; i++){
+            StdAudio.play(0.333);
+        }
     }
 }
     // TODO: Remove all comments that say TODO when you're done.

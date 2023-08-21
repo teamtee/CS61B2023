@@ -12,7 +12,13 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T> {
     public ArrayDeque(){
         items = (T[]) new Object[length];
         head = 0;
-        tail = 1;
+        tail = 0;
+    }
+    public ArrayDeque(int inputLength){
+        length = inputLength;
+        items = (T[]) new Object[length];
+        head = 0;
+        tail = 0;
     }
 
     @Override
@@ -29,8 +35,8 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T> {
         if(isFull()){
             return;
         }
-        items[tail] = x;
         tail = (tail + 1 ) % length;
+        items[tail] = x;
     }
 
     @Override
@@ -40,12 +46,12 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T> {
 
     @Override
     public boolean isEmpty() {
-        return (head + 1 ) % length == tail;
+        return head  == tail;
     }
 
     @Override
     public int size() {
-        return (tail - head - 1 + length) % length ;
+        return (tail - head + length) % length ;
     }
 
     @Override
@@ -75,7 +81,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T> {
         if ( index + 1 > size()){
             return null;
         }
-        return items[(head + index) % length];
+        return items[(head + index + 1) % length];
     }
     public boolean contains(T item){
         for(T x: this){
@@ -106,7 +112,7 @@ public class ArrayDeque<T> implements Deque<T>,Iterable<T> {
 
         @Override
         public boolean hasNext() {
-            return (pointor + 1) % length != tail;
+            return pointor  != tail;
         }
 
         @Override
