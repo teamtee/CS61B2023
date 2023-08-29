@@ -11,11 +11,11 @@ public class GuitarString {
      * means the values cannot be changed at runtime. We'll discuss this and
      * other topics in lecture on Friday. */
     private static final int SR = 44100;      // Sampling Rate
-    private static final double DECAY = .996; // energy decay factor
+    protected static double DECAY = .996; // energy decay factor
 
     /* Buffer for storing sound data. */
     // TODO: uncomment the following line once you're ready to start this portion
-    private Deque<Double> buffer;
+    protected Deque<Double> buffer;
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
@@ -51,7 +51,7 @@ public class GuitarString {
      */
     public void tic() {
         double first = buffer.removeFirst();
-        double newItem = (buffer.get(0) + first)/2 * 0.996;
+        double newItem = (buffer.get(0) + first)/2 * DECAY;
         buffer.addLast(newItem);
         // TODO: Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.

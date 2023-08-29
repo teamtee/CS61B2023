@@ -1,13 +1,14 @@
 package gh2;
 
-import deque.ArrayDeque;
 import edu.princeton.cs.algs4.StdAudio;
 import edu.princeton.cs.algs4.StdDraw;
+
+import java.util.TreeMap;
 
 /**
  * A client that uses the synthesizer package to replicate a plucked guitar string sound
  */
-public class GuitarHero {
+public class HarpHero {
     private static final double CONCERT_A = 440.0;
     private static final double CONCERT_C = CONCERT_A * Math.pow(2, 3.0 / 12.0);
     public static double key2Concert(int ch){
@@ -16,9 +17,9 @@ public class GuitarHero {
     public static void main(String[] args) {
         /* Create guitar strings */
         String keyboard="q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
-        GuitarString[] guitarList = new GuitarString[keyboard.length()];
+        HarpString[] guitarList = new HarpString[keyboard.length()];
         for(int index = 0 ; index < keyboard.length();index++){
-            guitarList[index] = new GuitarString(key2Concert(index));
+            guitarList[index] = new HarpString(key2Concert(index));
         }
         while (true) {
 
@@ -31,7 +32,7 @@ public class GuitarHero {
                 }
             }
             double sample = 0.0;
-            for (GuitarString item : guitarList){
+            for (HarpString item : guitarList){
                  sample = sample + item.sample();
                  item.tic();
             }

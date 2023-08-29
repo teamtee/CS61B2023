@@ -1,6 +1,7 @@
 package ngordnet.main;
 
 import ngordnet.browser.NgordnetServer;
+import ngordnet.ngrams.NGramMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,9 +14,9 @@ public class Main {
         NGramMap ngm = new NGramMap(wordFile, countFile);
 
         */
-
         hns.startUp();
-        hns.register("history", new DummyHistoryHandler());
-        hns.register("historytext", new DummyHistoryTextHandler());
+        NGramMap wordMap = new NGramMap("data/ngrams/top_49887_words.csv","data/ngrams/total_counts.csv");
+        hns.register("history", new DummyHistoryHandler(wordMap));
+        hns.register("historytext", new DummyHistoryTextHandler(wordMap));
     }
 }

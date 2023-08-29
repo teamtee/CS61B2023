@@ -1,7 +1,7 @@
 package gh2;
 
-public class Harp extends GuitarString{
-    public Harp(double frequency) {
+public class HarpString extends GuitarString{
+    public HarpString(double frequency) {
         super(frequency*2);
     }
 
